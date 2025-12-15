@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Home</h2>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <p>Welcome @User.Identity.Name!</p>
+    <a asp-controller="Home" asp-action="Secret">Go to secret page</a>
+    <form asp-controller="Account" asp-action="Logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+}
+else
+{
+    <p>You are not logged in.</p>
+    <a asp-controller="Account" asp-action="Login">Login</a>
+}
